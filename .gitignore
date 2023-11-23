@@ -1,0 +1,50 @@
+# Node.js
+node_modules/
+
+# Build artifacts
+build/
+dist/
+out/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+
+# Dependency directories
+bower_components/
+jspm_packages/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Compiled Java files
+*.class
+
+# Compiled C++ binaries
+*.out
+
+# Package files
+*.tar.gz
+*.zip
+*.gz
+
+# Log files
+*.log
+
+# Editor-specific files
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
