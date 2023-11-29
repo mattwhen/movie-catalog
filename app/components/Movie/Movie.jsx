@@ -1,12 +1,16 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { getMovies, getTrendingMovies } from '../../services/Api';
-import Image from '../../../node_modules/next/image';
+import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
-import { addToWatchlist } from '../../utils/helpers';
 import MovieCard from '../MovieCard/MovieCard';
+import MovieDetails from '../MovieDetails/MovieDetails';
+import Link from 'next/link';
 
 export default function Movie() {
 	const [trendingMovies, setTrendingMovies] = useState([]);
+	const [watchList, setWatchList] = useState(0);
 
 	useEffect(() => {
 		getTrendingMovies()
@@ -22,6 +26,11 @@ export default function Movie() {
 		return null;
 	}
 
+	function handleWatchList() {
+		console.log('test');
+		setWatchList(watchList + 1);
+	}
+
 	console.log('Trending Movies array', trendingMovies);
 
 	return (
@@ -32,20 +41,21 @@ export default function Movie() {
 						return (
 							<>
 								<div className=' w-56'>
-									<Image
-										className='hvr-grow'
-										key={movie.id}
-										src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
-										width={226}
-										height={220}
-										alt='movie posters'
+									<Link href={`/movie/${movie.id}`} >
+										<Image
+											className='hvr-grow'
+											key={movie.id}
+											src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
+											width={226}
+											height={220}
+											alt='movie posters'
+										/>
+									</Link>
+									<MovieDetails
+										title={movie.original_title}
+										onClick={handleWatchList}
+										watchList={watchList}
 									/>
-									<div className='overlay-font-color bg-gray-800 px-4 py-2'>
-										<a className='cursor-pointer' onClick={addToWatchlist}>Add to Watchlist</a>
-									</div>
-									<div className=' bg-gray-800 px-4 py-2'>
-										{movie.original_title}
-									</div>
 								</div>
 							</>
 						);

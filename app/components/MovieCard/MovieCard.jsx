@@ -1,6 +1,4 @@
 import React from 'react';
-import Movie, {trendingMovies} from '../Movie/Movie';
-import Image from 'next/image';
 
 const MovieCard = ({children}) => {
   return (

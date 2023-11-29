@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Catalog = () => {
+const MovieId = () => {
   return (
     <div>
-      Catalog
+      <h2>Test</h2>
     </div>
   );
 }
 
-export default Catalog;
+export default MovieId;
