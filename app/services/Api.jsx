@@ -27,22 +27,18 @@ export const getTrendingMovies = () => {
 		.catch((error) => console.error(error));
 };
 
-export const getMovieDetails = () => {
+export const getMovieDetails = async (query) => {
 	const options = {
 		method: 'GET',
-		url: 'https://api.themoviedb.org/3/movie/movie_id',
-		params: { language: 'en-US' },
 		headers: {
 			accept: 'application/json',
-			Authorization:
-				'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmUyZmUwZjI5MDE4MWFmMmIxZjc2ODJmMDQ5ZjJlNiIsInN1YiI6IjY1NTg0NTA2N2YwNTQwMThkNzhmNTJkMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2vK5lSGtwryC_4fikUwv776NIdPN2Xd6reyThPlm5_w',
-		},
+			Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmUyZmUwZjI5MDE4MWFmMmIxZjc2ODJmMDQ5ZjJlNiIsInN1YiI6IjY1NTg0NTA2N2YwNTQwMThkNzhmNTJkMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2vK5lSGtwryC_4fikUwv776NIdPN2Xd6reyThPlm5_w',
+		}
 	};
 
-	axios
-		.request(options)
-		.then(response => console.log(response))
-		.catch(function (error) {
-			console.error(error);
-		});
+	const res = await fetch(`https://api.themoviedb.org/3/movie/${query}?language=en-US`, options);
+	const data = await res.json();
+	
+	return data
 };
+

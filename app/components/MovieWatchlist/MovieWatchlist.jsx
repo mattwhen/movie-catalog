@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieDetails = ({title, watchList, onClick}) => {
+const MovieWatchlist = ({title, watchList, onClick}) => {
 	return (
 		<div>
 			<div className='overlay-font-color bg-gray-800 px-4 py-2'>
@@ -13,4 +13,4 @@ const MovieDetails = ({title, watchList, onClick}) => {
 	);
 };
 
-export default MovieDetails;
+export default MovieWatchlist;

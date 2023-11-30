@@ -5,12 +5,14 @@ import { getMovies, getTrendingMovies } from '../../services/Api';
 import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
 import MovieCard from '../MovieCard/MovieCard';
-import MovieDetails from '../MovieDetails/MovieDetails';
+import MovieWatchList from '../MovieWatchlist/MovieWatchlist';
 import Link from 'next/link';
 
 export default function Movie() {
 	const [trendingMovies, setTrendingMovies] = useState([]);
 	const [watchList, setWatchList] = useState(0);
+
+	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
 	useEffect(() => {
 		getTrendingMovies()
@@ -41,17 +43,19 @@ export default function Movie() {
 						return (
 							<>
 								<div className=' w-56'>
-									<Link href={`/movie/${movie.id}`} >
+									{/* Link to dynamic path */}
+									<Link href={`/movies/${movie.id}`} >
 										<Image
 											className='hvr-grow'
 											key={movie.id}
-											src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
+											src={`${URL}${movie.poster_path}`}
 											width={226}
 											height={220}
 											alt='movie posters'
+											data={movie.id}
 										/>
 									</Link>
-									<MovieDetails
+									<MovieWatchList
 										title={movie.original_title}
 										onClick={handleWatchList}
 										watchList={watchList}
