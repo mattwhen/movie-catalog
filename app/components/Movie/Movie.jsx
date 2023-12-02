@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { getMovies, getTrendingMovies } from '../../services/Api';
 import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
@@ -41,13 +41,12 @@ export default function Movie() {
 				<ul className='grid grid-cols-3 gap-8'>
 					{trendingMovies.map((movie) => {
 						return (
-							<>
-								<div className=' w-56'>
+							<Fragment key={movie.id}>
+								<div className='w-56'>
 									{/* Link to dynamic path */}
 									<Link href={`/movies/${movie.id}`} >
 										<Image
 											className='hvr-grow'
-											key={movie.id}
 											src={`${URL}${movie.poster_path}`}
 											width={226}
 											height={220}
@@ -61,7 +60,7 @@ export default function Movie() {
 										watchList={watchList}
 									/>
 								</div>
-							</>
+							</Fragment>
 						);
 					})}
 				</ul>
