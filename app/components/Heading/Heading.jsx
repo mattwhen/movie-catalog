@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Heading = () => {
 
 	return (
-		<nav className='p-5 h-14 flex justify-between items-center bg-gray-800'>
+		<nav className='p-5 h-14 flex justify-between items-center bg-black'>
 			<div>
 				<Link 
 				href='/'

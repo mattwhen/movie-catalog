@@ -33,7 +33,7 @@ export default function Movie() {
 		setWatchList(watchList + 1);
 	}
 
-	console.log('Trending Movies array', trendingMovies);
+	console.log('Trending Movies arr', trendingMovies);
 
 	return (
 		<div className='px-6'>
@@ -42,14 +42,14 @@ export default function Movie() {
 					{trendingMovies.map((movie) => {
 						return (
 							<Fragment key={movie.id}>
-								<div className='w-56'>
+								<div className=' w-48'>
 									{/* Link to dynamic path */}
 									<Link href={`/movies/${movie.id}`} >
 										<Image
 											className='hvr-grow'
 											src={`${URL}${movie.poster_path}`}
-											width={226}
-											height={220}
+											height={275}
+											width={192}
 											alt='movie posters'
 											data={movie.id}
 										/>

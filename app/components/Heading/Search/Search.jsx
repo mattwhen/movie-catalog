@@ -1,6 +1,15 @@
-import React from 'react';
+"use client";
 
-const Search = () => {
+import React, { useState } from 'react';
+import { searchMovie } from '../../../services/Api';
+
+const Search = ({params}) => {
+	const [input, setInput] = useState();
+
+	// await function searchHandler(params) {
+	// 	setInput()
+	// }
+
 	return (
 		<div>
 			<div className='flex justify-between items-center'>
@@ -10,8 +19,10 @@ const Search = () => {
 					placeholder='Search movies...'
 				/>
 
-
-				<button className=' bg-gray-400 text-black rounded-r-md'>
+				<button
+					className=' bg-gray-400 text-black rounded-r-md'
+					onClick={searchMovie('Harry Potter')}
+				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
