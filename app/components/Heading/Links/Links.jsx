@@ -6,13 +6,13 @@ const Links = () => {
 	return (
 		<div>
 			<ul className=''>
-				<Link className='mx-4 hvr-fade' href='/catalog' >
+				<Link className='mx-4 hvr-fade hover:text-yellow' href='/catalog' >
 					Catalog
 				</Link>
-				<Link className='mx-4 hvr-fade' href={'/watchlist'}>
+				<Link className='mx-4 hvr-fade hover:text-yellow' href={'/watchlist'}>
 					Watchlist
 				</Link>
-				<Link className='mx-4 hvr-fade' href='/login'>
+				<Link className='mx-4 hvr-fade hover:text-yellow' href='/login'>
 					Login
 				</Link>
 			</ul>

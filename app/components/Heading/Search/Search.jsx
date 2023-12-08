@@ -21,7 +21,6 @@ const Search = ({params}) => {
 
 				<button
 					className=' bg-gray-400 text-black rounded-r-md'
-					onClick={searchMovie('Harry Potter')}
 				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -29,7 +28,7 @@ const Search = ({params}) => {
 						viewBox='0 0 24 24'
 						strokeWidth='1.5'
 						stroke='currentColor'
-						className='w-8 h-8'
+						className='w-8 h-8 bg-yellow rounded-r-md text-dark-blue'
 					>
 						<path
 							strokeLinecap='round'

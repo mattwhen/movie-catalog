@@ -8,6 +8,7 @@
   --background-end-rgb: 255, 255, 255;
   --font-color-rgb: 87, 153, 239;
   --nav-color-links: #29abe8;
+  --background-color: #14213d;
 }
 
 @media (prefers-color-scheme: dark) {

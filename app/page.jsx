@@ -7,7 +7,6 @@ export default function Home() {
 		// Can either be used as <> </> or <React.StrictMode> </React.StrictMode> but this is mainly used to help developers identify and fix issues in their code.
 		<>
 			<Heading />
-      <h1 className='text-4xl font-bold py-4 text-center'>Top Trending Movies</h1>
 			<Movie />
 		</>
 	);
