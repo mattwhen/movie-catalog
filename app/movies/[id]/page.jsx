@@ -20,14 +20,26 @@ async function page({ params }) {
 
 	console.log(movieCredits.crew);
 
+	function formatDate(date) {
+		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+		const year = new Date(date).getFullYear();
+		const day = new Date(date).getDate();
+		const month = new Date(date).getMonth();
+
+		const formatMonth = months[month];
+
+		return formatMonth + ' ' + day + ', ' + year;
+	}
+
 	return (
 		<>
 			<Heading />
 			<main className='bg-dark-blue'>
-				<section className='pageSection max-h-fit mx-0'>
-					<div className='flex flex-col lg:min-h-96'>
+				<section className='pageSection w-full'>
+					<div className='flex flex-col' id='center'>
 						<div className='headerContent'>
-							<h1 className='text-3xl py-5'>{movieDetails.original_title}</h1>
+							<h1 className='text-3xl py-5 font-bold'>{movieDetails.original_title}</h1>
 						</div>
 						<div className='mainContent flex justify-center '>
 							<Image
@@ -39,35 +51,50 @@ async function page({ params }) {
 							<iframe
 								className='mx-2'
 								type='video/mp4'
-								src={`https://www.youtube.com/embed/${moviePlayback.results[0].key}`}
+								src={`https://www.youtube.com/embed/${moviePlayback.results[0].key}?autoplay=1&mute=1`}
 								width={800}
 							></iframe>
 							<ul className='bg-yellow w-32 flex flex-col items-center justify-around '>
-								<li className='rounded-full w-16 h-16 bg-black hover:bg-white cursor-pointer'></li>
-								<li className='rounded-full w-16 h-16 bg-black hover:bg-white cursor-pointer'></li>
-								<li className='rounded-full w-16 h-16 bg-black hover:bg-white cursor-pointer'></li>
+								<li className='rounded-full w-16 h-16 bg-dark-blue text-black  hover:bg-white cursor-pointer'>
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										fill='none'
+										viewBox='0 0 24 24'
+										stroke-width='1.5'
+										stroke='currentColor'
+										className='w-12 h-12  hover:text-black'
+									>
+										<path
+											stroke-linecap='round'
+											stroke-linejoin='round'
+											d='M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z'
+										/>
+									</svg>
+								</li>
+								<li className='rounded-full w-16 h-16 bg-dark-blue hover:bg-white cursor-pointer'></li>
+								<li className='rounded-full w-16 h-16 bg-dark-blue hover:bg-white cursor-pointer'></li>
 							</ul>
 						</div>
-					</div>
-					<div className='w-1/2 h-96'>
-						<h2 className='text-2xl my-4'>Overview</h2>
-						<p className='mb-5'>{movieDetails.overview}</p>
-						<div className='font-bold my-5'>
-							Director:
-							{movieCredits.crew.map((director) => {
-								<p>{director}</p>
-							})}
+						<div className=''>
+							<h2 className='text-2xl my-4'>Overview</h2>
+							<p className='mb-5'>{movieDetails.overview}</p>
+							<div className=' my-5'>
+								Director:
+								{movieCredits.crew.map((director) => {
+									<p>{director}</p>;
+								})}
+							</div>
+							<div className=''>
+								Stars:
+								{movieCredits.cast.slice(0, 3).map((cast) => (
+									<p key={cast.id}>{cast.name}</p>
+								))}
+							</div>
+							<p className='my-5'>
+								Released: {formatDate(movieDetails.release_date)}
+							</p>
+							<p className=' my-5'>Where to watch: </p>
 						</div>
-						<div className='font-bold'>
-							Stars:
-							{movieCredits.cast.slice(0, 3).map((cast) => (
-								<p key={cast.id}>{cast.name}</p>
-							))}
-						</div>
-						<p className='font-bold my-5'>
-							Release Date: {movieDetails.release_date}
-						</p>
-						<p className='font-bold my-5'>Where to watch: </p>
 					</div>
 				</section>
 			</main>

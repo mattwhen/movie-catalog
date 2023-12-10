@@ -9,6 +9,7 @@
   --font-color-rgb: 87, 153, 239;
   --nav-color-links: #29abe8;
   --background-color: #14213d;
+  --yellow: #fca311;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,6 +30,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+section {
+  height: 1000px;
+  position: relative;
+}
+
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;
@@ -44,6 +50,40 @@ body {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
   cursor: pointer;
+}
+
+#center {
+  width: 60%; 
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -120% );
+  background-color: var(--background-color);
+}
+
+.container {
+  display: flex;
+  overflow-x: auto;
+  height: 400px;
+}
+
+/* Define the scrollbar style */
+.container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Define the thumb style */
+.container::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom right, #fca311 0%, #fca311 100%);
+  border-radius: 5px;
+}
+
+/* Define the track style */
+.container::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border: 1px solid #ccc;
 }
 
 .middle {

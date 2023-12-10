@@ -36,38 +36,42 @@ export default function Movie() {
 	console.log('Trending Movies arr', trendingMovies);
 
 	return (
-		<div className='px-6 bg-dark-blue'>
-			<h1 className='text-4xl font-bold py-4 text-center'>
-				Top Trending Movies
-			</h1>
-			<MovieCard>
-				<ul className='grid grid-cols-3 gap-8'>
-					{trendingMovies.map((movie) => {
-						return (
-							<Fragment key={movie.id}>
-								<div className=' w-48'>
-									{/* Link to dynamic path */}
-									<Link href={`/movies/${movie.id}`}>
-										<Image
-											className='hvr-grow'
-											src={`${URL}${movie.poster_path}`}
-											height={275}
-											width={192}
-											alt='movie posters'
-											data={movie.id}
-										/>
-									</Link>
-									<MovieWatchList
-										title={movie.original_title}
-										onClick={handleWatchList}
-										watchList={watchList}
-									/>
-								</div>
-							</Fragment>
-						);
-					})}
-				</ul>
-			</MovieCard>
-		</div>
+		<section className='flex justify-center'>
+			<div>
+				<div>
+					<h1 className='text-4xl font-bold py-4 ml-5'>Top Trending Movies</h1>
+				</div>
+				<div className='container'>
+					<MovieCard>
+						<ul className='flex'>
+							{trendingMovies.map((movie) => {
+								return (
+									<Fragment key={movie.id}>
+										<div className='w-40 ml-5'>
+											{/* Link to dynamic path */}
+											<Link href={`/movies/${movie.id}`}>
+												<Image
+													className='hvr-grow'
+													src={`${URL}${movie.poster_path}`}
+													height={275}
+													width={192}
+													alt='movie posters'
+													data={movie.id}
+												/>
+											</Link>
+											<MovieWatchList
+												title={movie.original_title}
+												onClick={handleWatchList}
+												watchList={watchList}
+											/>
+										</div>
+									</Fragment>
+								);
+							})}
+						</ul>
+					</MovieCard>
+				</div>
+			</div>
+		</section>
 	);
 }
