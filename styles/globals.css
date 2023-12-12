@@ -30,10 +30,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-section {
-  height: 1000px;
-  position: relative;
-}
 
 .hvr-grow {
   display: inline-block;
@@ -53,12 +49,12 @@ section {
 }
 
 #center {
-  width: 60%; 
-  height: 400px;
+  width: 1000px;
+  padding: 0px 20px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -120% );
+  transform: translate(-50%, -35% );
   background-color: var(--background-color);
 }
 

@@ -29,6 +29,22 @@ export const getTrendingMovies = () => {
 		.catch((error) => console.error(error));
 };
 
+export const getTopRated = async () => {
+	const options = {
+		method: 'GET',
+		headers: {
+		  accept: 'application/json',
+		  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmUyZmUwZjI5MDE4MWFmMmIxZjc2ODJmMDQ5ZjJlNiIsInN1YiI6IjY1NTg0NTA2N2YwNTQwMThkNzhmNTJkMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2vK5lSGtwryC_4fikUwv776NIdPN2Xd6reyThPlm5_w'
+		}
+	  };
+	  
+	 const result = await fetch('https://api.themoviedb.org/3/movie/top_rated', options)
+	 const response = await result.json();
+	
+	 console.log('asd', response.results);
+	 return response.results;
+}
+
 export const getMovieDetails = async (query) => {
 	const options = {
 		method: 'GET',
@@ -83,7 +99,7 @@ export const searchMovie = async (query) => {
 		}
 	};
 
-	const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
+	const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`, options);
 	const data = res.json();
 
 	const movieData = data.id;
