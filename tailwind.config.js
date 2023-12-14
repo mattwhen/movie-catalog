@@ -15,7 +15,8 @@ const config: Config = {
      'yellow': '#fca311',
      'silver': '#e5e5e5',
      'black': '#000000',
-     'white': '#FFFFFF'
+     'white': '#FFFFFF',
+     'nav-bar': '#000814',
     }
   },
   plugins: [],

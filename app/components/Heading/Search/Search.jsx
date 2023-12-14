@@ -1,27 +1,29 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import { searchMovie } from '../../../services/Api';
 
-const Search = ({params}) => {
-	const [input, setInput] = useState();
+const Search = () => {
+	const [searchField, setSearchField] = useState('');
 
-	// await function searchHandler(params) {
-	// 	setInput()
-	// }
+	function handleChange(elem) {
+		setSearchField(elem.target.value);
+	}
+
+	function submitQuery(searchField) {
+		console.log(searchField);
+	}
 
 	return (
 		<div>
-			<div className='flex justify-between items-center'>
+			<div className='lg:flex lg:justify-between lg:items-center hidden'>
 				<input
 					className='text-black rounded-l-md w-72 h-8 p-4'
 					type='text'
 					placeholder='Search movies...'
+					onChange={handleChange}
 				/>
-
-				<button
-					className=' bg-gray-400 text-black rounded-r-md'
-				>
+				<button className='bg-gray-400 text-black rounded-r-md' onClick={submitQuery}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'

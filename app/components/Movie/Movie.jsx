@@ -6,7 +6,6 @@ import Image from 'next/image';
 import MovieCard from '../MovieCard/MovieCard';
 import MovieWatchList from '../MovieWatchlist/MovieWatchlist';
 import Link from 'next/link';
-import styles from './Movie.css';
 
 export default function Movie() {
 	const [trendingMovies, setTrendingMovies] = useState([]);
@@ -36,7 +35,6 @@ export default function Movie() {
 	}, []); // Empty dependency array means this effect runs once on component mount
 
 
-
 	if (!trendingMovies) {
 		return null;
 	}
@@ -46,15 +44,12 @@ export default function Movie() {
 		setWatchList(watchList + 1);
 	}
 
-	// console.log('Trending Movies arr', trendingMovies);
-	console.log('Upcoming Movies arr', topRatedMovies);
-
 	return (
 	<main>
-		<section className='flex justify-center movieContainer'>
+		<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
 			<div>
 				<div>
-					<h1 className='text-4xl font-bold py-4 ml-5'>Top Trending Movies</h1>
+					<h1 className='text-md font-bold py-4 ml-3'>Top Trending Movies</h1>
 				</div>
 				<div className='container'>
 					<MovieCard>
@@ -88,10 +83,10 @@ export default function Movie() {
 				</div>
 			</div>
 		</section>
-		<section className='flex justify-center'>
+		<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
 			<div>
 				<div>
-					<h1 className='text-4xl font-bold py-4 ml-5'>Top Rated Movies</h1>
+					<h1 className='text-md font-bold my-8 ml-3'>Top Rated Movies</h1>
 				</div>
 				<div className='container'>
 					<MovieCard>
