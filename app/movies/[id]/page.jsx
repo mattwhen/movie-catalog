@@ -1,8 +1,11 @@
 // Dynamic Route since we do not know the exact segment name ahead of time, we
 // want to create a route from dynamic data from moviedb and prerendered at build time.
-import React from 'react';
+import React, { Fragment } from 'react';
 import Image from 'next/image';
 import Heading from '../../components/Heading/Heading';
+import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieWatchlist from '../../components/MovieWatchlist/MovieWatchlist';
+import Link from 'next/link';
 import {
 	getCredits,
 	getMovieDetails,
@@ -12,26 +15,15 @@ import {
 
 // API endpoint for handling dynamic routes.
 // Dynamic Segments are passed as the 'params' prop to layout, page, route, and generateMetadata functions.
-async function page({ params }) {
-	const movieDetails = await getMovieDetails(params.id);
+async function page({ params, handleWatchList, watchList }) {
 	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
+	const movieDetails = await getMovieDetails(params.id);
 	const moviePlayback = await getPlaybackVideo(params.id);
 	const movieCredits = await getCredits(params.id);
+	const movieRecom = await getRecommended(params.id);
 
-	async function fetchRecommendations() {
-		try {
-			const recommendations = await getRecommended(params.id);
-			console.log('recommendations:', recommendations);
-			return recommendations;
-			// Do something with the recommendations
-		} catch (error) {
-			console.error('Error fetching recommendations:', error);
-		}
-	}
-
-	const recommendedMovies = fetchRecommendations();
-
+	// Formats date for the Release Date for each movie.
 	function formatDate(date) {
 		const months = [
 			'January',
@@ -60,16 +52,16 @@ async function page({ params }) {
 	return (
 		<>
 			<Heading />
-			<main className='bg-dark-blue flex justify-center'>
-				<section className='contentSection flex justify-center md:max-w-[800px] lg:max-w-[1200px] lg:w-max'>
+			<main className='bg-dark-blue flex-col items-center lg:flex lg:flex-wrap lg:flex-row lg:justify-around'>
+				<section className='contentSection md:max-w-[800px] lg:max-w-[1200px] lg:w-max'>
 					<div className='flex flex-col'>
 						<div className='headerContent'>
 							<h1 className='text-xl py-5 px-4 font-bold lg:text-3xl'>
 								{movieDetails.original_title}
 							</h1>
 						</div>
-						<div className='mediaContent mx-4 flex flex-col-reverse justify-center md:flex-row lg:flex-row '>
-							<div className='aboutContainer pr-4'>
+						<div className='mediaContent flex flex-col-reverse justify-between md:flex-row lg:flex-row lg:justify-start '>
+							<div className='aboutContainer px-4'>
 								<Image
 									src={`${URL}${movieDetails.poster_path}`}
 									width={300}
@@ -78,9 +70,9 @@ async function page({ params }) {
 									className='w-32 h-40 rounded-md md:h-full md:w-full lg:w-full lg:h-full'
 								/>
 							</div>
-							<div className='md:flex justify-center'>
+							<div className='flex justify-center'>
 								<iframe
-									className='h-64 mb-4 md:w-[500px] md:h-[300px] lg:mx-2 lg:w-[800px] lg:h-full'
+									className='h-64 w-full mb-4 md:w-[500px] md:h-[300px] lg:mx-2 lg:w-[800px] lg:h-full'
 									type='video/mp4'
 									src={`https://www.youtube.com/embed/${moviePlayback.results[0].key}?autoplay=1&mute=1`}
 								></iframe>
@@ -113,8 +105,46 @@ async function page({ params }) {
 							<div>
 								<p className=' my-5'>Where to watch: </p>
 							</div>
-							<p>Title: {recommendedMovies.page}</p>
 						</div>
+					</div>
+				</section>
+				{/* Map through the entire Array and use the MovieCard component 
+					just like in the homepage to render recommended movies.
+					Although some movies might not have any recommendations at all, so we need to return nothing (null).
+					*/}
+				<section className='md:max-w-[800px] lg:max-w-[1200px] lg:w-max'>
+					<div>
+					<h2 className='text-xl'>Because you viewed {movieDetails.original_title}</h2>
+					<div className='container'>
+						<MovieCard>
+							<ul className='flex'>
+								{movieRecom.map((movie) => {
+									return (
+										<Fragment key={movie.id}>
+											<div className='w-40 mr-5'>
+												{/* Link to dynamic path */}
+												<Link href={`/movies/${movie.id}`}>
+													<Image
+														className='hvr-grow'
+														src={`${URL}${movie.poster_path}`}
+														height={275}
+														width={192}
+														alt='movie posters'
+														data={movie.id}
+													/>
+												</Link>
+												<MovieWatchlist
+													title={movie.original_title}
+													onClick={handleWatchList}
+													watchList={watchList}
+												/>
+											</div>
+										</Fragment>
+									);
+								})}
+							</ul>
+						</MovieCard>
+					</div>
 					</div>
 				</section>
 			</main>
