@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieWatchlist = ({title, watchList, onClick}) => {
 	return (
-		<div className='bg-black'>
+		<div className='bg-dark-blue'>
 			<div className='overlay-font-color px-4 py-2'>
 				<a className='cursor-pointer hover:text-yellow' onClick={onClick}>
 					Add to Watchlist

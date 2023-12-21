@@ -17,6 +17,7 @@ const config: Config = {
      'black': '#000000',
      'white': '#FFFFFF',
      'nav-bar': '#000814',
+     'anchor-tags': '#29abe8',
     }
   },
   plugins: [],

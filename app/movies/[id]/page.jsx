@@ -49,10 +49,12 @@ async function page({ params, handleWatchList, watchList }) {
 		return formatMonth + ' ' + day + ', ' + year;
 	}
 
+	console.log(movieCredits);
+
 	return (
 		<>
 			<Heading />
-			<main className='bg-dark-blue flex-col items-center lg:flex lg:flex-wrap lg:flex-row lg:justify-around'>
+			<main className='bg-dark-blue flex-col items-center lg:flex lg:flex-wrap xl:flex xl:flex-col lg:flex-row lg:justify-around'>
 				<section className='contentSection md:max-w-[800px] lg:max-w-[1200px] lg:w-max'>
 					<div className='flex flex-col'>
 						<div className='headerContent'>
@@ -60,7 +62,7 @@ async function page({ params, handleWatchList, watchList }) {
 								{movieDetails.original_title}
 							</h1>
 						</div>
-						<div className='mediaContent flex flex-col-reverse justify-between md:flex-row lg:flex-row lg:justify-start '>
+						<div className='mediaContent flex flex-col-reverse justify-between md:flex-row lg:flex-row lg:justify-start lg:h-[400px] lg:w-[1200px] '>
 							<div className='aboutContainer px-4'>
 								<Image
 									src={`${URL}${movieDetails.poster_path}`}
@@ -83,9 +85,7 @@ async function page({ params, handleWatchList, watchList }) {
 							<p className='mb-5 font-thin'>{movieDetails.overview}</p>
 							<div className=' my-5 font-bold'>
 								Director:
-								{movieCredits.crew.map((director) => {
-									<p>{director}</p>;
-								})}
+								{movieCredits.cast.known_for_department}
 							</div>
 							<div className='font-bold'>
 								Stars:
@@ -108,14 +108,12 @@ async function page({ params, handleWatchList, watchList }) {
 						</div>
 					</div>
 				</section>
-				{/* Map through the entire Array and use the MovieCard component 
-					just like in the homepage to render recommended movies.
-					Although some movies might not have any recommendations at all, so we need to return nothing (null).
-					*/}
-				<section className='md:max-w-[800px] lg:max-w-[1200px] lg:w-max'>
+				{/* some movies might not have any recommendations at all, so we need to return nothing (null). */}
+				<section className='md:max-w-[800px] lg:max-w-[1200px]'>
 					<div>
-					<h2 className='text-xl'>Because you viewed {movieDetails.original_title}</h2>
+					<h2 className='text-2xl'>Because you viewed {movieDetails.original_title}</h2>
 					<div className='container'>
+					{movieRecom.length > 0 ? 
 						<MovieCard>
 							<ul className='flex'>
 								{movieRecom.map((movie) => {
@@ -143,7 +141,9 @@ async function page({ params, handleWatchList, watchList }) {
 									);
 								})}
 							</ul>
-						</MovieCard>
+						</MovieCard> : 
+							<p className='text-center text-2xl mt-10'>No recommendations available!</p>
+						}
 					</div>
 					</div>
 				</section>
