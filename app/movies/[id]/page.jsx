@@ -49,8 +49,6 @@ async function page({ params, handleWatchList, watchList }) {
 		return formatMonth + ' ' + day + ', ' + year;
 	}
 
-	console.log(movieCredits);
-
 	return (
 		<>
 			<Heading />
@@ -61,6 +59,14 @@ async function page({ params, handleWatchList, watchList }) {
 							<h1 className='text-xl py-5 px-4 font-bold lg:text-3xl'>
 								{movieDetails.original_title}
 							</h1>
+
+						</div>
+						<div className='flex mb-4 ml-2'>
+							{movieDetails.genres.map(genre => {
+								return (
+									<a className=' border border-silver cursor-pointer rounded-md px-3 mx-2 hover:text-yellow hover:border-yellow'>{genre.name}</a>
+								)
+							})}
 						</div>
 						<div className='mediaContent flex flex-col-reverse justify-between md:flex-row lg:flex-row lg:justify-start lg:h-[400px] lg:w-[1200px] '>
 							<div className='aboutContainer px-4'>
