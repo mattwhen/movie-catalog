@@ -173,6 +173,9 @@ export const searchMovie = async (query) => {
 		console.error('Error fetching Searched result');
 	}
 
-	const data = result.json();
-	const movieData = data.id;
+	const data = await result.json();
+
+	console.log(data.results);
+	const searchData = data.results;
+	return searchData;
 };

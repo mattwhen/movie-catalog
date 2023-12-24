@@ -1,17 +1,19 @@
 'use client';
 
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { searchMovie } from '../../../services/Api';
 
 const Search = () => {
+	
 	const [searchField, setSearchField] = useState('');
 
-	function handleChange(elem) {
-		setSearchField(elem.target.value);
-	}
-
-	function submitQuery(searchField) {
-		console.log(searchField);
+	async function submitQuery() {
+		try {
+			const results = await searchMovie(searchField);
+		} catch (error) {
+			console.error('Error searching for Movies:', error);
+		}
 	}
 
 	return (
@@ -21,7 +23,7 @@ const Search = () => {
 					className='text-black rounded-l-md w-72 h-8 p-4'
 					type='text'
 					placeholder='Search movies...'
-					onChange={handleChange}
+					onChange={element => setSearchField(element.target.value)}
 				/>
 				<button className='bg-gray-400 text-black rounded-r-md' onClick={submitQuery}>
 					<svg
