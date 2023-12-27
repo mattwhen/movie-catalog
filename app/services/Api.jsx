@@ -175,7 +175,6 @@ export const searchMovie = async (query) => {
 
 	const data = await result.json();
 
-	console.log(data.results);
 	const searchData = data.results;
 	return searchData;
 };
