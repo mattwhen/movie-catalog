@@ -1,24 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { searchMovie } from '../../../services/Api';
 
-const Search = () => {
-	const [searchField, setSearchField] = useState('');
-	const router = useRouter();
+const Search = ({submitQuery, value, onChange}) => {
 
-	const submitQuery = async () => {
-		try {
-		  const results = await searchMovie(searchField);
-		  console.log('My search results:', results);
-		  // Navigate user to the search results page based on Query search.
-		  router.push(`/search?query=${searchField}`);
-		  return results;
-		} catch (error) {
-		  console.error('Error searching for Movies:', error);
-		}
-	  }
 
 	return (
 		<div>
@@ -27,7 +12,8 @@ const Search = () => {
 					className='text-black rounded-l-md w-72 h-8 p-4'
 					type='text'
 					placeholder='Search movies...'
-					onChange={(element) => setSearchField(element.target.value)}
+					value={value}
+					onChange={onChange}
 				/>
 				<button
 					className='bg-gray-400 text-black rounded-r-md'

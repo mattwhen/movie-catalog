@@ -2,17 +2,14 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Heading from '../components/Heading/Heading';
 import Search from '../components/Heading/Search/Search';
+import MovieCard from '../components/MovieCard/MovieCard';
 
-const page = ({ params }) => {
-  const router = useRouter();
-
-
+const page = async ({ param }) => {
+  
 	return (
 		<>
-			<Heading />
-			<h1>Search results for: </h1>
+			<h1>Search results for:</h1>
 		</>
 	);
 };
