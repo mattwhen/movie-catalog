@@ -82,7 +82,7 @@ async function page({ params, handleWatchList, watchList }) {
 								<iframe
 									className='h-64 w-full mb-4 md:w-[500px] md:h-[300px] lg:mx-2 lg:w-[800px] lg:h-full'
 									type='video/mp4'
-									src={`https://www.youtube.com/embed/${moviePlayback.results[0].key}?autoplay=1&mute=1`}
+									src={moviePlayback.results[0] ? `https://www.youtube.com/embed/${moviePlayback.results[0].key}?autoplay=1&mute=1` : null}
 								></iframe>
 							</div>
 						</div>

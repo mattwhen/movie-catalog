@@ -48,7 +48,6 @@ export const getRecommended = async (query) => {
 	// Returns an Array of Objects.
 	const data = await response.json();
 
-	console.log(data.results[1]);
 	// Store the Array we want to render data to the user. 
 	// const results = data.results;
 

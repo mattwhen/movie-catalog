@@ -10,11 +10,13 @@ const Heading = () => {
 	const router = useRouter();
 
 	const [searchField, setSearchField] = useState('');
-	const [searchResult, setSearchResult] = useState([]);
 
-		const submitQuery = (e) => {
+
+		const submitQuery = async (e) => {
 			e.preventDefault();
-			searchField ? router.push(`/movies/search?query=${searchField}`) : null;
+			const result = await searchMovie(searchField);
+			console.log(result);
+			searchField ? router.push(`/movies/search/${searchField}`) : null;
 		}
 
 	return (
