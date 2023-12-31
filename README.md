@@ -1,129 +1,58 @@
-# What is Next.js?
+![ScreenShot](https://img.shields.io/badge/License-MIT-blue)
+# RMC (Reel Movie Catalog)
 
-> ⚠️ Warning - This project requires Node version 18.7 or greater.
+## Technologies Used
+* React.js
+* Tailwind CSS
+* Next.js
 
-From [nextjs.org/](https://nextjs.org/):
+## Deployment
+https://movie-catalog-95qmtuezc-mattwhen.vercel.app/
 
-Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
+## Description 
+Introducting RMC, a web application that is still under development, designed to seamlessly fetch and showcase an extensive collection of movies from a dynamic database, offering users a comprehensive platform to discover, explore, and stay updated on their favorite films. Say goodbye to the uncertainty of choosing the right movie! RMC equips users with the ability to view detailed information, including summaries, cast details, ratings, and reviews, empowering them to make informed decisions and enhance their viewing experience. They can also search for their movie title and display their results based on their keywords.  <br> <br>
 
-Under the hood, Next.js also abstracts and automatically configures tooling needed for React, like bundling, compiling, and more. This allows you to focus on building your application instead of spending time with configuration.
+## How it works
+ <br> <br>
 
-Whether you're an individual developer or part of a larger team, Next.js can help you build interactive, dynamic, and fast React applications.
+## Mobile Layout
+<br>
+<p>
+<img src='/' width='480'>
+</p> <br><br>
 
-Project file structure
+## Desktop Layout
+<br>
+<p>
+<img src='/' width='480'>
+</p>  <br><br>
 
-- You'll spend most of your time in the `pages/movies` and the `components` dir which will contain your movie listings react code.
-- You're also going to use the Nextjs Image component. There's an example of it in the movies file. Here's a [https://nextjs.org/docs/pages/api-reference/components/image](link) to the documentation for it as well.
+## Contributions
+I am always looking for future improvements and suggestions for my projects, you can contribute to this project by going to my [repo](https://github.com/mattwhen/fetchcoin) and creating a pull request. This project is still under development, which means it also needs quite a bit of work 😅. If you need assistance with how to clone the repo, simply follow these three steps. <br>
 
-How Next.js routing works
+1.  Clone the repo using the link [here](https://github.com/mattwhen/movie-catalog). 
 
-- Right now we'll focus on how pages are created in Next.js
-  How tailwind works
+2. From there, click on the Git Clone button using your preferred method as shown below to clone the application. <br><br>
 
-  This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align='center'>
+<img src='./src/images/gitClone.png'>
+</p>
+<br>
 
-## Getting Started
-
-First, run the development server:
-
-```bash
+3. Once you clone the repo, run the application locally in the terminal using the following command:
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can now view the application locally on your machine
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Make necessary changes, then submit a pull request. 
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## License
+This license is covered under the MIT license. <br>
 
-&nbsp;
-
-## Tailwindcss
-
-Here's a [short explanation](https://tailwindcss.com/docs/utility-first) on how tailwindcss works.
-
-- In short, tailwindcss creates utility classes that you can write right into your `html`.
-
-With tailwindcss:
-
-```html
-<div
-  class="text-base sm:text-lg md:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
->
-  This is a small font text that changes size with the screen width.
-</div>
-```
-
-CSS only:
-
-```css
-.large-font {
-  font-size: 40px;
-}
-.small-font {
-  font-size: 20px;
-}
-
-/* Larger screens (e.g., desktops or laptops) */
-@media screen and (min-width: 1200px) {
-  .large-font {
-    font-size: 48px; /* Slightly larger font size for larger screens */
-  }
-  .small-font {
-    font-size: 24px; /* Slightly larger font size for larger screens */
-  }
-}
-```
-
-```html
-<h1 className="large-font">Text</h1>
-<p className="small-font">Text</p>
-```
-
-## Heroicons
-
-- Browse the icons at [heroicons.com](https://heroicons.com/)
-- Find the documentation at [github.com/tailwindlabs/heroicons](https://github.com/tailwindlabs/heroicons)
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## How to clone the repository using codespaces
-
-Click the "Code" dropdown button (usually green, located near the top right of the repository page).
-In the dropdown, you'll see an option for "Open with Codespaces." Click on it.
-Create a New Codespace:
-
-If no Codespaces have been created for this repository in your account, you'll have the option to create a new one.
-Click on “New codespace” at the bottom of the panel.
-This will start the process of creating a cloud-based development environment for that repository.
-Configure the Codespace (if necessary):
-
-Depending on the repository, you might have options to configure the Codespace, like selecting the branch, machine type, or configuration settings.
-After configuration, GitHub will set up the environment, which can take a few moments.
-Access the Codespace:
-
-Once set up, you'll be taken to a VS Code-like environment in your browser, loaded with the repository's code.
-You can now edit, run, and commit changes to the repository directly from this environment.
-Working with the Repository:
-
-You can work with the repository as if it was cloned on your local machine. Any changes you make can be committed and pushed back to the repository on GitHub.
-# movie-catalog
+## Questions
+Questions, comments, or concerns? Reach me at matt@mattwhen.com <br>
+I'm always looking to connect with other developers! 
