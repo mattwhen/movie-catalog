@@ -52,9 +52,9 @@ async function page({ params, handleWatchList, watchList }) {
 	return (
 		<>
 			<Heading />
-			<main className='bg-dark-blue flex-col items-center lg:flex lg:flex-wrap xl:flex xl:flex-col lg:flex-row lg:justify-around'>
+			<main className='flex-col items-center lg:flex lg:flex-wrap xl:flex xl:flex-col lg:flex-row lg:justify-around'>
 				<section className='contentSection md:max-w-[800px] lg:max-w-[1200px] lg:w-max'>
-					<div className='flex flex-col'>
+					<div className='flex flex-col bg-dark-blue rounded-md mt-8 mb-8'>
 						<div className='headerContent'>
 							<h1 className='text-xl py-5 px-4 font-bold lg:text-3xl'>
 								{movieDetails.original_title}
