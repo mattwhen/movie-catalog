@@ -19,6 +19,8 @@ module.exports = {
      'white': '#FFFFFF',
      'nav-bar': '#000814',
      'anchor-tags': '#29abe8',
+     'gray': '#1b263b',
+     'dark-gray': '#343a40',
     }
   },
   plugins: [],

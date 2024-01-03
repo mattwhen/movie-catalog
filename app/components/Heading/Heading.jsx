@@ -20,7 +20,7 @@ const Heading = () => {
 		}
 
 	return (
-		<nav className='h-14 flex'>
+		<nav className='bg-gray h-14 flex'>
 			<div className='flex items-center w-full lg:justify-center '>
 				<div className='mr-5'>
 					<Link href='/'>

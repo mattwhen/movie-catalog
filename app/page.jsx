@@ -1,6 +1,7 @@
 import App from './layout';
 import Heading from './components/Heading/Heading';
 import Movie from './components/Movie/Movie';
+import Footer from './components/Footer/Footer';
 
 export default function Home() {
 	return (
@@ -8,6 +9,7 @@ export default function Home() {
 		<>
 			<Heading />
 			<Movie />
+			<Footer/>
 		</>
 	);
 }

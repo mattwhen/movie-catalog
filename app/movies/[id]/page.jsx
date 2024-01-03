@@ -12,6 +12,7 @@ import {
 	getPlaybackVideo,
 	getRecommended,
 } from '../../services/Api';
+import Footer from '../../components/Footer/Footer';
 
 // API endpoint for handling dynamic routes.
 // Dynamic Segments are passed as the 'params' prop to layout, page, route, and generateMetadata functions.
@@ -154,6 +155,7 @@ async function page({ params, handleWatchList, watchList }) {
 					</div>
 				</section>
 			</main>
+			<Footer />
 		</>
 	);
 }
