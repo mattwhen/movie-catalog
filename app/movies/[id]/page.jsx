@@ -1,6 +1,8 @@
 // Dynamic Route since we do not know the exact segment name ahead of time, we
 // want to create a route from dynamic data from moviedb and prerendered at build time.
-import React, { Fragment } from 'react';
+"use server";
+
+import { Fragment } from 'react';
 import Image from 'next/image';
 import Heading from '../../components/Heading/Heading';
 import MovieCard from '../../components/MovieCard/MovieCard';
@@ -24,6 +26,7 @@ async function page({ params, handleWatchList, watchList }) {
 	const movieCredits = await getCredits(params.id);
 	const movieRecom = await getRecommended(params.id);
 
+
 	// Formats date for the Release Date for each movie.
 	function formatDate(date) {
 		const months = [
@@ -46,10 +49,14 @@ async function page({ params, handleWatchList, watchList }) {
 		const month = new Date(date).getMonth();
 
 		const formatMonth = months[month];
-
+		
 		return formatMonth + ' ' + day + ', ' + year;
-	}
+	};
 
+	function directorsHandler(arr, query) {
+		return arr.filter(item => item.known_for_department.includes(query));
+	}
+	
 	return (
 		<>
 			<Heading />
@@ -92,7 +99,8 @@ async function page({ params, handleWatchList, watchList }) {
 							<p className='mb-5 font-thin'>{movieDetails.overview}</p>
 							<div className=' my-5 font-bold'>
 								Director:
-								{movieCredits.cast.known_for_department}
+								{/* {() => movieDetails.filter(item => item.known_for_department.includes('Crew'))} */}
+								
 							</div>
 							<div className='font-bold'>
 								Stars:
@@ -131,10 +139,11 @@ async function page({ params, handleWatchList, watchList }) {
 												<Link href={`/movies/${movie.id}`}>
 													<Image
 														className='hvr-grow'
+														// src={`${URL}${movie.poster_path}`}
 														src={`${URL}${movie.poster_path}`}
 														height={275}
 														width={192}
-														alt='movie posters'
+														alt='Movie Poster'
 														data={movie.id}
 													/>
 												</Link>

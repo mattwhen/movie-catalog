@@ -43,10 +43,10 @@ const Footer = () => {
 						<div>
 							<h2 className='text-2xl'>{title}</h2>
 							<ul className='flex flex-col'>
-								<li className='cursor-pointer hover:text-black'>{links[0]}</li>
-								<li className='cursor-pointer hover:text-black'>{links[1]}</li>
-								<li className='cursor-pointer hover:text-black'>{links[2]}</li>
-								<li className='cursor-pointer hover:text-black'>{links[3]}</li>
+								<li className='cursor-pointer hvr-fade hover:text-yellow'>{links[0]}</li>
+								<li className='cursor-pointer hvr-fade hover:text-yellow'>{links[1]}</li>
+								<li className='cursor-pointer hvr-fade hover:text-yellow'>{links[2]}</li>
+								<li className='cursor-pointer hvr-fade hover:text-yellow'>{links[3]}</li>
 							</ul>
 						</div>
 					);

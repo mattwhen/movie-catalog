@@ -149,7 +149,7 @@ export const getCredits = async (query) => {
 	}
 
 
-	const data = result.json();
+	const data = await result.json();
 	return data;
 };
 
