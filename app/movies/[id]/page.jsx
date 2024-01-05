@@ -1,6 +1,5 @@
 // Dynamic Route since we do not know the exact segment name ahead of time, we
 // want to create a route from dynamic data from moviedb and prerendered at build time.
-"use server";
 
 import { Fragment } from 'react';
 import Image from 'next/image';
@@ -26,6 +25,7 @@ async function page({ params, handleWatchList, watchList }) {
 	const movieCredits = await getCredits(params.id);
 	const movieRecom = await getRecommended(params.id);
 
+	const directors = filterHandler(movieCredits);
 
 	// Formats date for the Release Date for each movie.
 	function formatDate(date) {
@@ -49,14 +49,23 @@ async function page({ params, handleWatchList, watchList }) {
 		const month = new Date(date).getMonth();
 
 		const formatMonth = months[month];
-		
-		return formatMonth + ' ' + day + ', ' + year;
-	};
 
-	function directorsHandler(arr, query) {
-		return arr.filter(item => item.known_for_department.includes(query));
+		return formatMonth + ' ' + day + ', ' + year;
 	}
-	
+
+	// Used to filter the set of data from movieCredits for the job title of "Director"
+	function filterHandler(arr) {
+		const filterDirectors = arr.crew.map((element) => {
+			return (
+				<div className='font-thin' key={element.id}>
+					{element.job === 'Director' ? <p>{element.name}</p> : null}
+				</div>
+			);
+		});
+
+		return filterDirectors;
+	}
+
 	return (
 		<>
 			<Heading />
@@ -67,16 +76,17 @@ async function page({ params, handleWatchList, watchList }) {
 							<h1 className='text-xl py-5 px-4 font-bold lg:text-3xl'>
 								{movieDetails.original_title}
 							</h1>
-
 						</div>
 						<div className='flex mb-4 ml-2'>
-							{movieDetails.genres.map(genre => {
+							{movieDetails.genres.map((genre) => {
 								return (
-									<a className=' border border-silver cursor-pointer rounded-md px-3 mx-2 hover:text-yellow hover:border-yellow'>{genre.name}</a>
-								)
+									<a className=' border border-silver cursor-pointer rounded-md px-3 mx-2 hover:text-yellow hover:border-yellow'>
+										{genre.name}
+									</a>
+								);
 							})}
 						</div>
-						<div className='mediaContent flex flex-col-reverse justify-between md:flex-row lg:flex-row lg:justify-start lg:h-[400px] lg:w-[1200px] '>
+						<div className='mediaContent flex flex-col-reverse justify-between md:flex-row lg:flex-row lg:justify-start lg:h-[400px] lg:w-[1200px]'>
 							<div className='aboutContainer px-4'>
 								<Image
 									src={`${URL}${movieDetails.poster_path}`}
@@ -90,7 +100,11 @@ async function page({ params, handleWatchList, watchList }) {
 								<iframe
 									className='h-64 w-full mb-4 md:w-[500px] md:h-[300px] lg:mx-2 lg:w-[800px] lg:h-full'
 									type='video/mp4'
-									src={moviePlayback.results[0] ? `https://www.youtube.com/embed/${moviePlayback.results[0].key}?autoplay=1&mute=1` : null}
+									src={
+										moviePlayback.results[0]
+											? `https://www.youtube.com/embed/${moviePlayback.results[0].key}?autoplay=1&mute=1`
+											: null
+									}
 								></iframe>
 							</div>
 						</div>
@@ -99,8 +113,7 @@ async function page({ params, handleWatchList, watchList }) {
 							<p className='mb-5 font-thin'>{movieDetails.overview}</p>
 							<div className=' my-5 font-bold'>
 								Director:
-								{/* {() => movieDetails.filter(item => item.known_for_department.includes('Crew'))} */}
-								
+								{directors}
 							</div>
 							<div className='font-bold'>
 								Stars:
@@ -126,41 +139,46 @@ async function page({ params, handleWatchList, watchList }) {
 				{/* some movies might not have any recommendations at all, so we need to return nothing (null). */}
 				<section className='md:max-w-[800px] lg:max-w-[1200px]'>
 					<div>
-					<h2 className='text-2xl'>Because you viewed {movieDetails.original_title}</h2>
-					<div className='container'>
-					{movieRecom.length > 0 ? 
-						<MovieCard>
-							<ul className='flex'>
-								{movieRecom.map((movie) => {
-									return (
-										<Fragment key={movie.id}>
-											<div className='w-40 mr-5'>
-												{/* Link to dynamic path */}
-												<Link href={`/movies/${movie.id}`}>
-													<Image
-														className='hvr-grow'
-														// src={`${URL}${movie.poster_path}`}
-														src={`${URL}${movie.poster_path}`}
-														height={275}
-														width={192}
-														alt='Movie Poster'
-														data={movie.id}
-													/>
-												</Link>
-												<MovieWatchlist
-													title={movie.original_title}
-													onClick={handleWatchList}
-													watchList={watchList}
-												/>
-											</div>
-										</Fragment>
-									);
-								})}
-							</ul>
-						</MovieCard> : 
-							<p className='text-center text-2xl mt-10'>No recommendations available!</p>
-						}
-					</div>
+						<h2 className='text-2xl'>
+							Because you viewed {movieDetails.original_title}
+						</h2>
+						<div className='container'>
+							{movieRecom.length > 0 ? (
+								<MovieCard>
+									<ul className='flex'>
+										{movieRecom.map((movie) => {
+											return (
+												<Fragment key={movie.id}>
+													<div className='w-40 mr-5'>
+														{/* Link to dynamic path */}
+														<Link href={`/movies/${movie.id}`}>
+															<Image
+																className='hvr-grow'
+																// src={`${URL}${movie.poster_path}`}
+																src={`${URL}${movie.poster_path}`}
+																height={275}
+																width={192}
+																alt='Movie Poster'
+																data={movie.id}
+															/>
+														</Link>
+														<MovieWatchlist
+															title={movie.original_title}
+															onClick={handleWatchList}
+															watchList={watchList}
+														/>
+													</div>
+												</Fragment>
+											);
+										})}
+									</ul>
+								</MovieCard>
+							) : (
+								<p className='text-center text-2xl mt-10'>
+									No recommendations available!
+								</p>
+							)}
+						</div>
 					</div>
 				</section>
 			</main>
