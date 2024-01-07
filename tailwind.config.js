@@ -21,6 +21,8 @@ module.exports = {
      'anchor-tags': '#29abe8',
      'gray': '#1b263b',
      'dark-gray': '#343a40',
+     'link-blue': '#2962ff',
+     'link-blue-hover': '#13385d',
     }
   },
   plugins: [],
