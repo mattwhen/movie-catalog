@@ -24,7 +24,7 @@ const Heading = () => {
 			<div className='flex items-center w-full lg:justify-center '>
 				<div className='mr-5'>
 					<Link href='/'>
-						<h2 className='hvr-fade text-lg ml-4 font-bold lg:text-2xl mr-5 hover:text-yellow'>
+						<h2 className='hvr-fade ml-4 font-bold text-sm lg:text-lg mr-5 hover:text-yellow'>
 							MOVIE CATALOG
 						</h2>
 					</Link>

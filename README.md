@@ -13,6 +13,12 @@ https://movie-catalog-95qmtuezc-mattwhen.vercel.app/
 Introducting RMC, a web application that is still under development, designed to seamlessly fetch and showcase an extensive collection of movies from a dynamic database, offering users a comprehensive platform to discover, explore, and stay updated on their favorite films. Say goodbye to the uncertainty of choosing the right movie! RMC equips users with the ability to view detailed information, including summaries, cast details, ratings, and reviews, empowering them to make informed decisions and enhance their viewing experience. They can also search for their movie title and display their results based on their keywords.  <br> <br>
 
 ## How it works
+The application was designed to be user friendly and easy to use. On the homepage, you will be presented with "Trending Movies" and "Top Rated Movies" which is data retrieved from the <a href='https://developer.themoviedb.org/docs/getting-started'>TMDB</a> API using asynchronous programming to fetch our data from the server, while still initially loading other content to the user.
+<br>
+When clicking on each movie title, you will be re-directed to another endpoint using "Dynamic Routing" using Next.js, thanks to it's <a href='https://nextjs.org/docs/app/building-your-application/routing/defining-routes'>file-system based routing</a>. <br>
+
+The search bar functionality will find keywords that match a certain movie title and render the matched results to the user based on their input.
+
  <br> <br>
 
 ## Mobile Layout

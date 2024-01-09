@@ -47,7 +47,7 @@ export default function Movie() {
 	return (
 	<main className='px-4'>
 		<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
-			<div>
+			<div className='md:w-[800px] lg:w-[1000px]'>
 				<div>
 					<h1 className='text-md font-bold py-4 ml-4'>Top Trending Movies</h1>
 				</div>
@@ -84,7 +84,7 @@ export default function Movie() {
 			</div>
 		</section>
 		<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
-			<div>
+			<div className='md:w-[800px] lg:w-[1000px]'>
 				<div>
 					<h1 className='text-md font-bold py-8 ml-4'>Top Rated Movies</h1>
 				</div>
