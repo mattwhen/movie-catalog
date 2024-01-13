@@ -30,6 +30,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 
 .hvr-grow {
   display: inline-block;

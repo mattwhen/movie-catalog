@@ -5,7 +5,7 @@ import Link from 'next/link';
 const Links = () => {
 	return (
 		<div>
-			<ul className='hidden ml-5 lg:block'>
+			<ul className='hidden ml-5 md:block lg:block'>
 				<Link className='mx-4 hvr-fade hover:text-yellow' href='/catalog' >
 					Catalog
 				</Link>

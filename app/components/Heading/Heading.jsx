@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import Links from './Links/Links';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { searchMovie } from '../../services/Api';
+
 
 const Heading = () => {
 	const router = useRouter();
@@ -24,15 +26,22 @@ const Heading = () => {
 			<div className='flex items-center w-full lg:justify-center '>
 				<div className='mr-5'>
 					<Link href='/'>
-						<h2 className='hvr-fade ml-4 font-bold text-sm lg:text-lg mr-5 hover:text-yellow'>
-							MOVIE CATALOG
+						<h2 className='lg:text-lg mr-5 hover:cursor-pointer'>
+							<Image
+								src={'/images/RMC_Logo.png'}
+								alt='RMC Logo'
+								width={100}
+								height={50}
+								layout='fixed'
+								className='hover:cursor-pointer'
+							/>
 						</h2>
 					</Link>
 				</div>
 				<form onSubmit={submitQuery}>
-					<div className='lg:flex lg:justify-between lg:items-center hidden'>
+					<div className='md:flex md:justify-between md:items-center lg:flex lg:justify-between lg:items-center hidden'>
 						<input
-							className='text-black rounded-l-md w-72 h-8 p-4 lg:w-[500px]'
+							className='text-black rounded-l-md w-72 h-8 p-4 md:w-[250px] lg:w-[400px]'
 							type='text'
 							placeholder='Search movies...'
 							value={searchField}
