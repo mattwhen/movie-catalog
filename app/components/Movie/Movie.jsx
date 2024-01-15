@@ -77,11 +77,11 @@ export default function Movie() {
 													/>
 												</Link>
 												<MovieWatchList
-													rating={movie.vote_average}
 													title={movie.original_title}
-													onClick={handleWatchList}
-													watchList={watchList}
+													rating={movie.vote_average}
 													movie={movie.id}
+													watchList={watchList}
+													onClick={handleWatchList}
 												/>
 											</div>
 										</Fragment>
@@ -116,9 +116,11 @@ export default function Movie() {
 													/>
 												</Link>
 												<MovieWatchList
-													title={movie.original_title}
-													onClick={handleWatchList}
-													watchList={watchList}
+														title={movie.original_title}
+														rating={movie.vote_average}
+														movie={movie.id}
+														watchList={watchList}
+														onClick={handleWatchList}
 												/>
 											</div>
 										</Fragment>
