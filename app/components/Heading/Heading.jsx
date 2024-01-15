@@ -23,7 +23,7 @@ const Heading = () => {
 
 	return (
 		<nav className='bg-gray h-14 flex'>
-			<div className='flex items-center w-full lg:justify-center '>
+			<div className='flex items-center w-full md:justify-around lg:justify-around'>
 				<div className='mr-5'>
 					<Link href='/'>
 						<h2 className='lg:text-lg mr-5 hover:cursor-pointer'>
