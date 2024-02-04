@@ -31,7 +31,7 @@ const page = async ({ params }) => {
 												data={movie.id}
 											/>
 										</Link>
-										<MovieWatchlist title={movie.title} />
+										<MovieWatchlist title={movie.title} rating={movie.vote_average} />
 									</div>
 								</div>
 							);
