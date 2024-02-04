@@ -166,6 +166,7 @@ async function page({ params, handleWatchList, watchList }) {
 															title={movie.original_title}
 															onClick={handleWatchList}
 															watchList={watchList}
+															rating={movie.vote_average}
 														/>
 													</div>
 												</Fragment>

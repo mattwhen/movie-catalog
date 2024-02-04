@@ -4,7 +4,7 @@ import Link from "next/link";
 const MovieWatchlist = ({ title, watchList, onClick, rating, movie }) => {
 
 	function handleDecimal(num) {
-		return num.toFixed(1);
+		return num.toFixed(2);
 	}
 
 	return (

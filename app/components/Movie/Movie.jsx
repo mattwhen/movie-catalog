@@ -16,6 +16,7 @@ export default function Movie() {
 
 	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
+	// Fetch top rated movies on component mount
 	useEffect(() => {
 		getTopRated()
 			.then((data) => {
@@ -26,6 +27,7 @@ export default function Movie() {
 			});
 	}, []); // Empty dependency array means this effect runs once on component mount
 
+	// Fetch trending movies on component mount
 	useEffect(() => {
 		getTrendingMovies()
 			.then((data) => {
