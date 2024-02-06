@@ -34,7 +34,7 @@ const Heading = () => {
 	};
 
 	return (
-		<nav className='bg-gray h-14 flex max-w-[1920px]'>
+		<nav className='bg-gray h-14 flex'>
 			<div className='flex items-center justify-between w-full px-4 md:justify-center'>
 				<div className='mr-5'>
 					<Link href='/'>
@@ -80,20 +80,20 @@ const Heading = () => {
 						</button>
 					</div>
 				</form>
-					{/* Mobile view */}
-					<div className='flex items-center md:hidden'>
-						<button
-							id='hamburger-menu'
-							className='text-4xl flex align-middle text-gray-500 ml-auto'
-							onClick={mobileOpenHandler}
-						>
-							{mobileOpen ? (
-								<RxCross1 className='z-50 transition-all text-gray-700' />
-							) : (
-								<GiHamburgerMenu className=' text-gray-700' />
-							)}
-						</button>
-					</div>
+				{/* Mobile view */}
+				<div className='flex items-center md:hidden'>
+					<button
+						id='hamburger-menu'
+						className='text-4xl flex align-middle text-gray-500 ml-auto'
+						onClick={mobileOpenHandler}
+					>
+						{mobileOpen ? (
+							<RxCross1 className='z-50 transition-all text-gray-700' />
+						) : (
+							<GiHamburgerMenu className=' text-gray-700' />
+						)}
+					</button>
+				</div>
 				<Links />
 			</div>
 		</nav>

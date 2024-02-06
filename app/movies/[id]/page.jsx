@@ -154,7 +154,6 @@ async function page({ params, handleWatchList, watchList }) {
 														<Link href={`/movies/${movie.id}`}>
 															<Image
 																className='hvr-grow'
-																// src={`${URL}${movie.poster_path}`}
 																src={`${URL}${movie.poster_path}`}
 																height={275}
 																width={192}
