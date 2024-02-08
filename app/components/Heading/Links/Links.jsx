@@ -9,13 +9,13 @@ const Links = () => {
 				<div class='dropdown mx-5'>
 					<span className='cursor-pointer hover:text-yellow'>Movies</span>
 					<div class='dropdown-content'>
-						<Link className='hover:bg-yellow' href='/trending'>
+						<Link className='hover:bg-silver' href='/trending'>
 							Trending
 						</Link>
-						<Link className='hover:bg-yellow' href='/genres'>
+						<Link className='hover:bg-silver' href='/genres'>
 							Genres
 						</Link>
-						<Link className='hover:bg-yellow' href='/toprated'>
+						<Link className='hover:bg-silver' href='/toprated'>
 							Top Rated
 						</Link>
 					</div>
