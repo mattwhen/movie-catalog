@@ -1,12 +1,8 @@
 // Dynamic Route since we do not know the exact segment name ahead of time, we
 // want to create a route from dynamic data from moviedb and prerendered at build time.
-
-import { Fragment } from 'react';
 import Image from 'next/image';
 import Heading from '../../components/Heading/Heading';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import MovieWatchlist from '../../components/MovieWatchlist/MovieWatchlist';
-import Link from 'next/link';
 import {
 	getCredits,
 	getMovieDetails,
@@ -144,35 +140,7 @@ async function page({ params, handleWatchList, watchList }) {
 						</h2>
 						<div className='container'>
 							{movieRecom.length > 0 ? (
-								<MovieCard>
-									<ul className='flex'>
-										{movieRecom.map((movie) => {
-											return (
-												<Fragment key={movie.id}>
-													<div className='w-40 mr-5'>
-														{/* Link to dynamic path */}
-														<Link href={`/movies/${movie.id}`}>
-															<Image
-																className='hvr-grow'
-																src={`${URL}${movie.poster_path}`}
-																height={275}
-																width={192}
-																alt='Movie Poster'
-																data={movie.id}
-															/>
-														</Link>
-														<MovieWatchlist
-															title={movie.original_title}
-															onClick={handleWatchList}
-															watchList={watchList}
-															rating={movie.vote_average}
-														/>
-													</div>
-												</Fragment>
-											);
-										})}
-									</ul>
-								</MovieCard>
+								<MovieCard movies={movieRecom} URL={URL} />
 							) : (
 								<p className='text-center text-2xl mt-10'>
 									No recommendations available!

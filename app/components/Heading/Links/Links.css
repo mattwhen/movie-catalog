@@ -16,7 +16,7 @@
 
 .dropdown-content a {
 	color: black;
-	padding: 8px 0px;
+	padding: 8px 8px;
 	text-decoration: none;
 	display: block;
 }
@@ -24,4 +24,5 @@
 .dropdown:hover .dropdown-content {
 	display: block;
 	color: black;
+	background-color: white;
 }

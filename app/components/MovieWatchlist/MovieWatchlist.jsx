@@ -12,7 +12,7 @@ const MovieWatchlist = ({ title, watchList, onClick, rating, movie }) => {
 			<div className=' px-4 py-2'>
 				<div className='flex items-center mb-4'>
 					<FaStar className="text-xl mr-2 text-yellow" />
-					<p>{handleDecimal(rating)}</p>
+					<p>{rating ? handleDecimal(rating) : null}</p>
 				</div>
 				<a
 					className='overlay-font-color cursor-pointer hover:text-yellow'
