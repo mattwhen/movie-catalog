@@ -37,7 +37,7 @@ const Footer = () => {
 
 	return (
 		<footer className='bg-gray bg-stone-300 bottom-0 mt-28 h-[300px]'>
-			<div className='footerContainer flex items-start justify-evenly py-4'>
+			<div className='footerContainer flex items-start justify-evenly p-4'>
 				{footerLinks.map(({ id, title, links }) => {
 					return (
 						<div>
@@ -61,7 +61,7 @@ const Footer = () => {
 				<FaXTwitter className='text-2xl lg:text-3xl cursor-pointer m-auto hover:text-black' />
 			</ul>
 			<div className='flex justify-center'>
-				<p>© 2023 Matthew A. Nguyen. All Rights Reserved.</p>
+				<p className='mt-4'>© 2023 Matthew A. Nguyen. All Rights Reserved.</p>
 			</div>
 		</footer>
 	);
