@@ -133,16 +133,16 @@ async function page({ params, handleWatchList, watchList }) {
 					</div>
 				</section>
 				{/* some movies might not have any recommendations at all, so we need to return nothing (null). */}
-				<section className='md:max-w-[800px] lg:max-w-[1200px]'>
+				<section className='px-4 md:max-w-[800px] lg:max-w-[1200px]'>
 					<div>
-						<h2 className='text-2xl'>
+						<h2 className='text-lg md:text-2xl'>
 							Because you viewed {movieDetails.original_title}
 						</h2>
 						<div className='container'>
 							{movieRecom.length > 0 ? (
 								<MovieCard movies={movieRecom} URL={URL} />
 							) : (
-								<p className='text-center text-2xl mt-10'>
+								<p className='text-center text-lg md:text-2xl mt-10'>
 									No recommendations available!
 								</p>
 							)}

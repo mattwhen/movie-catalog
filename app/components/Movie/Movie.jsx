@@ -3,6 +3,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { getTrendingMovies, getTopRated, getRatings } from '../../services/Api';
 import MovieCard from '../MovieCard/MovieCard';
+import TrendingMovies from '../TrendingMovies/TrendingMovies';
 
 export default function Movie() {
 	const [trendingMovies, setTrendingMovies] = useState([]);
@@ -11,17 +12,6 @@ export default function Movie() {
 	const [loading, setLoading] = useState(true);
 
 	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
-
-	// Fetch top rated movies on component mount
-	useEffect(() => {
-		getTopRated()
-			.then((data) => {
-				setTopRatedMovies(data);
-			})
-			.catch((error) => {
-				console.error('Error fetching trending movies:', error.message);
-			});
-	}, []); // Empty dependency array means this effect runs once on component mount
 
 	// Fetch trending movies on component mount
 	useEffect(() => {
@@ -35,10 +25,17 @@ export default function Movie() {
 			});
 	}, []); // Empty dependency array means this effect runs once on component mount
 
-	function handleWatchList() {
-		console.log('test');
-		setWatchList(watchList + 1);
-	}
+	// Fetch top rated movies on component mount
+	useEffect(() => {
+		getTopRated()
+			.then((data) => {
+				setTopRatedMovies(data);
+			})
+			.catch((error) => {
+				console.error('Error fetching trending movies:', error.message);
+			});
+	}, []); // Empty dependency array means this effect runs once on component mount
+
 
 	return (
 		<main className='px-4'>
@@ -50,6 +47,7 @@ export default function Movie() {
 						</h1>
 					</div>
 					<MovieCard movies={trendingMovies} URL={URL} isLoading={loading} />
+					{/* <TrendingMovies /> */}
 				</div>
 			</section>
 			<section className='flex overflow-x-hidden lg:justify-center movieContainer'>

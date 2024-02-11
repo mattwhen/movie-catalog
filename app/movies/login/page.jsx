@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useFormik } from 'formik';
-import Heading from '../components/Heading/Heading';
+import Heading from '../../components/Heading/Heading';
 
 const validate = values => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+]{8,}$/;

@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import MovieWatchList from '../MovieWatchlist/MovieWatchlist';
-import MissingImage from '../../../public/images/missingImage.svg';
 
 const MovieCard = ({ movies, URL, isLoading }) => {
 	// If the movies are still loading, display a loading indicator

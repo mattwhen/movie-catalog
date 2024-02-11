@@ -7,11 +7,11 @@ const MovieWatchlist = ({ title, watchList, onClick, rating, movie }) => {
 	}
 
 	return (
-		<div className='bg-dark-blue'>
+		<div className='bg-dark-blue rounded-b-md'>
 			<div className=' px-4 py-2'>
 				<div className='flex items-center mb-4'>
 					<FaStar className='text-xl mr-2 text-yellow' />
-					<p>{rating ? handleDecimal(rating) : <p>No Ratings</p>}</p>
+					<div>{rating ? handleDecimal(rating) : <p>No Ratings</p>}</div>
 				</div>
 				<a
 					className='overlay-font-color cursor-pointer hover:text-yellow'

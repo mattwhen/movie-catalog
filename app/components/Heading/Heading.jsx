@@ -44,7 +44,6 @@ const Heading = () => {
 								alt='RMC Logo'
 								width={100}
 								height={50}
-								layout='fixed'
 								className='hover:cursor-pointer'
 							/>
 						</h2>
