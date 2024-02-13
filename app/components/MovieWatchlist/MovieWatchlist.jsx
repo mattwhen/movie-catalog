@@ -1,7 +1,10 @@
 import { FaStar } from 'react-icons/fa';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const MovieWatchlist = ({ title, watchList, onClick, rating, movie }) => {
+	const router = useRouter();
+
 	function handleDecimal(num) {
 		return num.toFixed(2);
 	}
@@ -15,7 +18,7 @@ const MovieWatchlist = ({ title, watchList, onClick, rating, movie }) => {
 				</div>
 				<a
 					className='overlay-font-color cursor-pointer hover:text-yellow'
-					onClick={onClick}
+					onClick={() => router.push('/movies/login')}
 				>
 					Add to Watchlist
 				</a>
