@@ -1,3 +1,5 @@
+"use client";
+
 import { FaStar } from 'react-icons/fa';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

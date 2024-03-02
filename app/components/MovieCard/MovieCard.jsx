@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import MovieWatchList from '../MovieWatchlist/MovieWatchlist';
+import TrendingMovies from '../TrendingMovies/TrendingMovies';
 
 const MovieCard = ({ movies, URL, isLoading }) => {
 	// If the movies are still loading, display a loading indicator
@@ -34,31 +35,7 @@ const MovieCard = ({ movies, URL, isLoading }) => {
 					? loadingElements.map((element) => {
 							return <div key={element.id}>{element}</div>;
 					  })
-					: movies.map((movie) => {
-							return (
-								<Fragment key={movie.id}>
-									<div className='w-40 ml-5'>
-										{/* Link to dynamic path */}
-										<Link href={`/movies/${movie.id}`}>
-											<Image
-												className='hvr-grow'
-												src={`${URL}${movie.poster_path}`}
-												height={275}
-												width={192}
-												alt='movie posters'
-												data={movie.id}
-												loading='lazy'
-											/>
-										</Link>
-										<MovieWatchList
-											title={movie.original_title}
-											rating={movie.vote_average}
-											movie={movie.id}
-										/>
-									</div>
-								</Fragment>
-							);
-					  })}
+					: <TrendingMovies className='mx-4'/>}
 			</ul>
 		</div>
 	);
