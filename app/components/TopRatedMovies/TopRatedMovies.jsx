@@ -1,20 +1,11 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import MovieWatchlist from '../MovieWatchlist/MovieWatchlist';
 
-import { getTrendingMovies, getTopRated, getRatings } from '../../services/Api';
-
-export default function page({ trendingMovies }) {
-	const [loading, setLoading] = useState(true);
-
-	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
-
+export default function TopRatedMovies({ topRatedMovies, URL }) {
 	return (
 		<>
-			{trendingMovies.map((movie) => {
+			{topRatedMovies.map((movie) => {
 				return (
 					<div key={movie.id} className='mb-5 mx-2'>
 						<div className='w-40'>

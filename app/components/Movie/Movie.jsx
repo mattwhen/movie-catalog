@@ -4,13 +4,15 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { getTrendingMovies, getTopRated, getRatings } from '../../services/Api';
 import MovieCard from '../MovieCard/MovieCard';
 import Heading from '../Heading/Heading';
+import Loading from '../Loading/Loading';
 import TrendingMovies from '../TrendingMovies/TrendingMovies';
+import TopRatedMovies from '../TopRatedMovies/TopRatedMovies';
 
 export default function Movie() {
 	const [trendingMovies, setTrendingMovies] = useState([]);
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [watchList, setWatchList] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
@@ -19,7 +21,7 @@ export default function Movie() {
 		getTrendingMovies()
 			.then((data) => {
 				setTrendingMovies(data);
-				setLoading(false);
+				setIsLoading(false);
 			})
 			.catch((error) => {
 				console.error('Error fetching trending movies:', error.message);
@@ -31,6 +33,7 @@ export default function Movie() {
 		getTopRated()
 			.then((data) => {
 				setTopRatedMovies(data);
+				setIsLoading(false);
 			})
 			.catch((error) => {
 				console.error('Error fetching trending movies:', error.message);
@@ -39,10 +42,7 @@ export default function Movie() {
 
 	return (
 		<>
-			<Heading
-				trendingMovies={trendingMovies}
-				topRatedMovies={topRatedMovies}
-			/>
+			<Heading />
 			<main className='px-4'>
 				<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
 					<div className='md:w-[800px] lg:w-[1000px]  xl:w-[1280px]'>
@@ -51,17 +51,22 @@ export default function Movie() {
 								Top Trending Movies
 							</h1>
 						</div>
-						<MovieCard movies={trendingMovies} URL={URL} isLoading={loading} />
+						<div className="container">
+							{isLoading ? <Loading /> : <TrendingMovies trendingMovies={trendingMovies} />}
+						</div>
 					</div>
 				</section>
 				<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
 					<div className='mt-12 md:w-[800px] lg:w-[1000px] xl:w-[1280px]'>
 						<div>
-							<h1 className='text-md font-bold ml-4 md:text-xl'>
+							<h1 className='text-md font-bold py-4 ml-4 md:text-xl'>
 								Top Rated Movies
 							</h1>
+							<div className="container">
+								{isLoading ? <Loading /> : <TopRatedMovies topRatedMovies={topRatedMovies} URL={URL} />}
+							</div>
 						</div>
-						<MovieCard movies={topRatedMovies} URL={URL} isLoading={loading} />
+
 					</div>
 				</section>
 			</main>

@@ -1,0 +1,8 @@
+.sidebar-container {
+    flex: 0.3;
+
+}
+
+.movie-titles {
+    flex: 0.7;
+}
