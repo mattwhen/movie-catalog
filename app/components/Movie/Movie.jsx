@@ -18,26 +18,30 @@ export default function Movie() {
 
 	// Fetch trending movies on component mount
 	useEffect(() => {
-		getTrendingMovies()
-			.then((data) => {
+		const trendingMovies = async () => {
+			try {
+				const data = await getTrendingMovies();
 				setTrendingMovies(data);
 				setIsLoading(false);
-			})
-			.catch((error) => {
+			} catch (error) {
 				console.error('Error fetching trending movies:', error.message);
-			});
+			}
+		};
+		trendingMovies();
 	}, []); // Empty dependency array means this effect runs once on component mount
 
 	// Fetch top rated movies on component mount
 	useEffect(() => {
-		getTopRated()
-			.then((data) => {
+		const topRatedMovies = async () => {
+			try {
+				const data = await getTopRated();
 				setTopRatedMovies(data);
 				setIsLoading(false);
-			})
-			.catch((error) => {
+			} catch (error) {
 				console.error('Error fetching trending movies:', error.message);
-			});
+			}
+		};
+		topRatedMovies();
 	}, []); // Empty dependency array means this effect runs once on component mount
 
 	return (
@@ -51,8 +55,12 @@ export default function Movie() {
 								Top Trending Movies
 							</h1>
 						</div>
-						<div className="container">
-							{isLoading ? <Loading /> : <TrendingMovies trendingMovies={trendingMovies} />}
+						<div className='container'>
+							{isLoading ? (
+								<Loading />
+							) : (
+								<TrendingMovies trendingMovies={trendingMovies} URL={URL} />
+							)}
 						</div>
 					</div>
 				</section>
@@ -62,11 +70,14 @@ export default function Movie() {
 							<h1 className='text-md font-bold py-4 ml-4 md:text-xl'>
 								Top Rated Movies
 							</h1>
-							<div className="container">
-								{isLoading ? <Loading /> : <TopRatedMovies topRatedMovies={topRatedMovies} URL={URL} />}
+							<div className='container'>
+								{isLoading ? (
+									<Loading />
+								) : (
+									<TopRatedMovies topRatedMovies={topRatedMovies} URL={URL} />
+								)}
 							</div>
 						</div>
-
 					</div>
 				</section>
 			</main>

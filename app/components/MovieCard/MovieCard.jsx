@@ -1,6 +1,8 @@
 import React from 'react';
 import MovieWatchList from '../MovieWatchlist/MovieWatchlist';
-import TrendingMovies from '../TrendingMovies/TrendingMovies';
+import MovieWatchlist from '../MovieWatchlist/MovieWatchlist';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const MovieCard = ({ movies, URL, isLoading }) => {
 	// If the movies are still loading, display a loading indicator
@@ -29,11 +31,30 @@ const MovieCard = ({ movies, URL, isLoading }) => {
 	return (
 		<div className='container'>
 			<ul className='flex'>
-				{isLoading
-					? loadingElements.map((element) => {
-							return <div key={element.id}>{element}</div>;
-					  })
-					: <TrendingMovies className='mx-4'/>}
+			{movies.map((movie) => {
+				return (
+					<div key={movie.id} className='mb-5 mx-2'>
+						<div className='w-40'>
+							{/* Link to dynamic path */}
+							<Link href={`/movies/${movie.id}`}>
+								<Image
+									className='hover:opacity-90'
+									src={`${URL}${movie.poster_path}`}
+									height={275}
+									width={192}
+									alt='movie posters'
+									data={movie.id}
+								/>
+							</Link>
+							<MovieWatchlist
+								title={movie.title}
+								rating={movie.vote_average}
+								movie={movie.id}
+							/>
+						</div>
+					</div>
+				);
+			})}
 			</ul>
 		</div>
 	);

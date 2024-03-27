@@ -143,7 +143,7 @@ async function page({ params, handleWatchList, watchList }) {
 								<MovieCard movies={movieRecom} URL={URL} />
 							) : (
 								<p className='text-center text-lg md:text-2xl mt-10'>
-									No recommendations available!
+									No recommendations at this time. Check again soon.
 								</p>
 							)}
 						</div>

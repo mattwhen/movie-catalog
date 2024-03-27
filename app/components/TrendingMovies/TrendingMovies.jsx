@@ -7,10 +7,8 @@ import MovieWatchlist from '../MovieWatchlist/MovieWatchlist';
 
 import { getTrendingMovies, getTopRated, getRatings } from '../../services/Api';
 
-export default function page({ trendingMovies }) {
+export default function page({ trendingMovies, URL }) {
 	const [loading, setLoading] = useState(true);
-
-	const URL = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
 	return (
 		<>
