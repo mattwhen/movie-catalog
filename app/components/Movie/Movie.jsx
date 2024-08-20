@@ -46,7 +46,7 @@ export default function Movie() {
 
 	return (
 		<>
-			<Heading />
+			<Heading trendingMovies={trendingMovies} />
 			<main className='px-4'>
 				<section className='flex overflow-x-hidden lg:justify-center movieContainer'>
 					<div className='md:w-[800px] lg:w-[1000px]  xl:w-[1280px]'>

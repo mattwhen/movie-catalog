@@ -1,14 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import MovieWatchlist from '../MovieWatchlist/MovieWatchlist';
 
-import { getTrendingMovies, getTopRated, getRatings } from '../../services/Api';
-
 export default function page({ trendingMovies, URL }) {
-	const [loading, setLoading] = useState(true);
 
 	return (
 		<>
